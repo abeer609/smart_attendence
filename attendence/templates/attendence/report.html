@@ -1,0 +1,17 @@
+{% extends 'attendence/base.html' %} {% block body %}
+<table class="table-auto border w-full">
+  <tr>
+    <td>Student Roll</td>
+    <td>Present</td>
+    <td>Date</td>
+  </tr>
+  {% for i in attendences %}
+  <tr>
+    <td class="border-b">{{i.std.username}}</td>
+    <td class="border-b">{{i.is_present}}</td>
+    <td class="border-b">{{i.date}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock body %}

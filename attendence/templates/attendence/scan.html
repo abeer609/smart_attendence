@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<script type="text/javascript"></script>
+	<style type="text/css">
+		.qr-container{
+			height: 300px;
+			width: 100%
+		}
+		#qr{
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
+	</style>
+</head>
+<body>
+	<div class='qr-container'>
+		<video id="qr"></video>
+	</div>
+<div id="result"></div>
+<script type="module">
+	import QrScanner from "{% static 'attendence/qr-scanner.min.js' %}";
+	const videoElem = document.querySelector("#qr")
+	const qrScanner = new QrScanner(
+    videoElem,
+    function(result){
+    	if (result.data){
+    		window.location.href = `/token/verify/${result.data}`
+    		this.stop();
+    	}
+    },
+    {
+    	highlightScanRegion: true
+    },
+);
+	qrScanner.start()
+</script>
+</body>
+</html>

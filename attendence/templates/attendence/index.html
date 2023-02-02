@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript" src="{% static 'attendence/jquery-3.6.3.min.js' %}"></script>
+  </head>
+  <body>
+    <img
+      src="https://chart.googleapis.com/chart?chs=250x250&cht=qr&chl={{token}}&choe=UTF-8"
+      alt=""
+    />
+    <script type="text/javascript">
+      var delayInMilliseconds = 10*1000; //1 second
+
+      setTimeout(function() {
+        location.reload();
+      }, delayInMilliseconds);
+
+    </script>
+  </body>
+</html>
